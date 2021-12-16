@@ -15,7 +15,7 @@ Activate the MeLa package with the keyboard shortcut `ctrl-alt-m`, through the m
 
 You should have the following interface, with the directory browser on the left pane, the file editor in the center pane and the MeLa tools on the right pane:
 
-![melaEditor](../images/melaEditor.png)
+![melaEditor](../.images/melaEditor.png)
 
 
 Tip: you can also read this tutorial directly inside Atom with the markdown preview package (download [markdown-preview-plus](https://atom.io/packages/markdown-preview-plus) because the default package is buggy).
@@ -91,7 +91,7 @@ Open the analysis tab. The warning is raised because the autonomy is less than 4
 
 This is because recording data is long. If you check the `Worst case execution time` table and see that the worst-case execution time is only half of the execution period.
 
-![WCET1](../images/WCET1.png)
+![WCET1](../.images/WCET1.png)
 
 
 Try to increase the size of the input variables so that the recording function is called less frequently. With `data: x(4000)` the recording function will be called once every 100 seconds, reducing the processor utilization rate to 0.5% and thus it's contribution to energy consumption to 5%.
@@ -109,12 +109,12 @@ The post-processing program is called from the shell file `simulation/postproces
 
 Click on the `Run` button. All steps of the simulation should be green.
 
-![SimulationSteps](../images/SimulationSteps.png)
+![SimulationSteps](../.images/SimulationSteps.png)
 
 
 Once the processing is finished, go in the `Simulation` directory (in the left panel) and compare the `input.png` and `output.png` files, both should contain exactly the same signal since we are only doing a recording.
 
-![InputOutputRecord](../images/InputOutputRecord.png)
+![InputOutputRecord](../.images/InputOutputRecord.png)
 
 The `input` directory contains the input files for the simulation.  All files in the directory with a `.bin` extension will be processed. For the moment, the files must be in a binary format. An example of script for formatting data can be found in the `preprocessing` directory. We expect to handle sac, mseed, and wave files in the next future.
 
@@ -123,12 +123,12 @@ The `input` directory contains the input files for the simulation.  All files in
 
 Reducing the park time to 7 hours reduce the autonomy of the float from 5.9 years to 2.5 years. In the energy consumption rate table, the total actuators contributions pass from 30% to 90%. This is normal since the actuators use a lot of energy for each ascent.
 
-![Autonomy1y](../images/Autonomy1y.png)
+![Autonomy1y](../.images/Autonomy1y.png)
 
 
 If the park time is kept to 7 hours and the depth 150 meters, the autonomy is reduced again to 1.7 years. Indeed, at this depth the float is capable of doing more cycles which reach 1476, but with a shorter descent and ascent time.
 
-![Autonomy2y](../images/Autonomy2y.png)
+![Autonomy2y](../.images/Autonomy2y.png)
 
 
 Now set the application to send the data through satellite communication by changing `File f(ARCHIVE)` to `File f(TRANSMIT)`. This time the estimated lifetime of the float drop to 0.2 years because we are trying to transmit too much data. We will overcome this with a detection algorithm in the next part of this tutorial.
@@ -228,17 +228,17 @@ RealTimeSequence trigger:
 
 Go to the simulation panel and click on the `Run` button. Check at the results in the `simulation/output.png` file. You can see that more than three minutes of signal is recorded whereas there is only one seismic in the data.
 
-![sim1](../images/sim1.png)
+![sim1](../.images/sim1.png)
 
 
 Move the `push(last3Minutes, x)` after the `x = stalta(staltaObj, x)` to record the result of STA/LTA and run the simulation again. In the output plot, you can see that the level of the STA/LTA pass 8 times above 20. 
 
-![sim2](../images/sim2.png)
+![sim2](../.images/sim2.png)
 
 
 To trigger only on the seismic signal at the end of the file, the trigger level must be above 25 and below 42. We choose an intermediate value of 30. If you run the simulation again, the seismic signal will be the only one recorded.
 
-![sim3](../images/sim3.png)
+![sim3](../.images/sim3.png)
 
 
 
@@ -249,7 +249,7 @@ Let's consider that you want to process each sample one after the other (instead
 
 An error is raised because the recording function with an execution time of 500 ms is above the period of acquisition of 25 ms (the acquisition rate is still set to 40 Hz). This means that samples will not be processed during 500 ms and it can also have consequences for other applications running at the same time on the MERMAID float.
 
-![sim3](../images/wcet2.png)
+![sim3](../.images/wcet2.png)
 
 
 Missing some data after a seismic detection is not a problem for our application. In order to remove the error, we must explicitly allow for the suspension of the acquisition.
