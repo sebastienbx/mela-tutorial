@@ -64,7 +64,7 @@ Data to run the simulations are included in the repositories, under each simulat
 
 ## <a name="directory"></a> Directory structure
 
-Each MeLa project must follow, at minima, the following structure. Other files and folders can be added without affecting the project, but these folders `Simulation/Input` and`Simulation/Output` exist to execute the applications `app.mela` on your personal computer. 
+Each MeLa project must follow, at minima, the following structure. Other files and folders can be added without affecting the project, but these folders `simulation/input` and`simulation/output` exist to execute the applications `app.mela` on your personal computer. 
 
 ```
 project
