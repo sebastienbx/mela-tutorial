@@ -1,0 +1,23 @@
+
+Mission:
+   ParkTime: 7 days
+   ParkDepth: 1500 meters
+
+Coordinator:
+   DescentAcqModes:
+   ParkAcqModes: Seismic
+   AscentAcqModes:
+
+ContinuousAcqMode Seismic:
+Input:
+   sensor: HydrophoneLF(40)
+   data: x(4000)
+
+Variables:
+  File f(ARCHIVE)
+
+RealTimeSequence main:
+    record(f, x)
+endseq
+endmode
+
