@@ -1,4 +1,4 @@
-# MeLa P-waves Tutorial
+# MeLa seismic tutorial
 
 In this tutorial we will write an application to record seismic noise in the oceans with the Mermaid float.
 
