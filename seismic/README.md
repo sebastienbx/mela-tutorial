@@ -73,10 +73,10 @@ Coordinator:
 ContinuousAcqMode Seismic:
 Input:
    sensor: HydrophoneLF(40)
-   data: x(4000)
+   data: x(40)
 
 Variables:
-  File f(TRANSMIT)
+  File f(ARCHIVE)
 
 RealTimeSequence main:
     record(f, x)
