@@ -30,8 +30,8 @@ MeLa applications can be executed on a personal computer. Since the language is 
 
 There are two tutorials to demonstrate some of the capabilities of MeLa. These tutorials are based on real study cases but are simplified to remain didactic.
 
-1. [Seismic earthquake detection tutorial](Seismic/README.md)
-2. [Fin whales detection tutorial](FinWhales/README.md)
+1. [Seismic earthquake detection tutorial](seismic/README.md)
+2. [Fin whales detection tutorial](fin-whales/README.md)
 
 MeLa is still evolving, any suggestions to improve the language is welcome.
 
