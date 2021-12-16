@@ -23,7 +23,7 @@ MeLa stands for Mermaid Language. It enables non-specialists of embedded systems
 3. ensuring that the software deployed on the instrument is safe and reliable
 4. enabling several applications to be deployed on the same instrument
 
-MeLa applications can be executed on a personal computer. Since the language is compiled into C code, the processing is fast. Even if the purpose of personal computer execution is verification before deployment on a float, MeLa can also be a good choice for processing data on a laptop.
+<!--MeLa applications can be executed on a personal computer. Since the language is compiled into C code, the processing is fast. Even if the purpose of personal computer execution is verification before deployment on a float, MeLa can also be a good choice for processing data on a laptop.-->
 
 
 ## <a name="tutolist"></a> Tutorials list
