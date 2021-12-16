@@ -5,9 +5,9 @@ In this tutorial we will write an application to record seismic noise in the oce
 
 ## 1. Setup
 
-Download this project and open it with Atom (open Atom, then `file -> open` and choose the directory `mela-tutorial` to open the whole project).
+Download this project and open it in Atom. In Atom, do `file -> open` and select the directory `mela-tutorial` to open the whole project.
 
-If you had not installed MeLa, follow the guide in the root directory [README.md](../README.md).
+If you do not have installed MeLa, follow the guide in the root directory [README.md](../README.md).
 
 In the Atom project panel, on the left, open the file `seismic/seismic.mela`.
 
@@ -18,14 +18,14 @@ You should have the following interface, with the directory browser on the left 
 ![melaEditor](../.images/melaEditor.png)
 
 
-Tip: you can also read this tutorial directly inside Atom with the markdown preview package (download [markdown-preview-plus](https://atom.io/packages/markdown-preview-plus) because the default package is buggy).
+<!-- Tip: you can also read this tutorial directly inside Atom with the markdown preview package (download [markdown-preview-plus](https://atom.io/packages/markdown-preview-plus) because the default package is buggy). -->
 
 
 ## 2. Interface presentation
 
 The MeLa interface is made up of three tabs:
 
-* The `Parse` tab in which a MeLa application is converted into a model. This tab will show syntax errors, problems with names of variables or with length of arrays.
+* The `Parse` tab in which a MeLa application is converted into a model. This tab will show syntax errors, problems with names of variables or with length of arrays, etc.
 
 
 * The `Analysis` tab in which it is verified that the limits of the instrument are not exceeded. There are different tables about processor usage, energy consumption and satellite transmission:
