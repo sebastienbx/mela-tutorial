@@ -1,0 +1,32 @@
+
+Mission:
+   ParkTime: 7 days
+   ParkDepth: 1500 meters
+
+Coordinator:
+   ParkAcqModes: spermWhales during 30 minutes every 1 hour
+
+ContinuousAcqMode spermWhales:
+
+Input:
+   // Use the high frequency hydrophone with sampling frequency of 20 kHz
+   sensor: HydrophoneHF(20000)
+   // Get packets of 128 samples
+   data: x(128)
+   // Set overlap of 32 samples
+   overlap: 32
+
+Variables:
+   // An array to process the acoustic data 
+   Array spectrum(128)
+   // Measured level
+   Float level
+   
+RealTimeSequence main:
+   // Compute FFT of length 128 with a hanning windows
+   spectrum = fft(x, 128, HANNING)
+   // Compute the mean level of the signal from 1 kHz to 10 kHz
+   level = mean(spectrum[7:64])
+endseq;
+
+endmode;

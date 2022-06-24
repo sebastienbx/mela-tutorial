@@ -14,38 +14,23 @@ Input:
 
 Variables:
   // Save last 3 minutes of data in a buffer (40 Hz * 180 s = 7200 samples)
-  BufferInt last3Minutes(7200)
-  /* Create an object to process a short term average of 400 samples
-   over long terme average of 4000 samples with a multiplyig factor
-   of 10 (because we are working with integers) */
-  StaLtaInt staltaObj(400, 4000, 0, 10)
-  /* Create an object for triggering 2 minutes (4800 samples)
-   after the result of the STA/LTA pass over 20 */
-  TriggerInt triggerObj(RISING_EDGE, 20, 4800, 0)
+  Buffer last3Minutes(7200)
+  // Trigger result
   Bool trig
   // File to record the data
   File f(TRANSMIT)
 
 RealTimeSequence trigger:
-   push(last3Minutes, x)
+   last3Minutes.push(x)
    x = abs(x)
-   x = stalta(staltaObj, x)
-   trig = trigger(triggerObj, x)
+   /* A short term average of 400 samples over long terme average of 4000 samples */
+   x = stalta(x, 400, 4000, 0)
+   /* Triggering 2 minutes (4800 samples) after the result of the STA/LTA pass over 2 */
+   trig = trigger(x, RISING_EDGE, 3.5, 4800, 0)
    if trig:
       @probability 1 per week
-      record(f, last3Minutes)
+      f.record(last3Minutes)
    endif
 endseq
-
-/*
-if trig:
-   @probability 1 per week
-   call record
-endif
-
-ProcessingSequence record:
-    record(f, last3Minutes)
-endseq
-*/
 
 endmode

@@ -11,13 +11,13 @@ Coordinator:
 ContinuousAcqMode Seismic:
 Input:
    sensor: HydrophoneLF(40)
-   data: x(40)
+   data: x(4000)
 
 Variables:
   File f(ARCHIVE)
 
 RealTimeSequence main:
-    record(f, x)
+    f.record(x)
 endseq
 endmode
 

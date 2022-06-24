@@ -14,7 +14,7 @@
 
 MeLa is a language designed for programming Mermaid floats, an instrument used to monitor marine environment by drifting with oceanic currents and diving up to 5000 meters depth at regular time intervals. It is equipped with a hydrophone for pluridisciplinary acoustic monitoring and can be equipped with several other kinds of sensors.
 
-![image1](.images/MermaidFloatAcoustic.png)
+![image1](images/MermaidFloatAcoustic.png)
 
 MeLa stands for Mermaid Language. It enables non-specialists of embedded systems to write their own applications for the instrument. This is fulfilled by:
 
@@ -31,7 +31,7 @@ MeLa stands for Mermaid Language. It enables non-specialists of embedded systems
 There are two tutorials to demonstrate some of the capabilities of MeLa. These tutorials are based on real study cases but are simplified to remain didactic.
 
 1. [Seismic detection tutorial](seismic/README.md)
-2. [Fin whales detection tutorial](fin-whales/README.md)
+2. [Sperm whales detection tutorial](sperm-whales/README.md)
 
 MeLa is still evolving, any suggestions to improve the language is welcome.
 

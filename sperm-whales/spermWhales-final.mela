@@ -1,0 +1,63 @@
+
+Mission:
+   ParkTime: 7 days
+   ParkDepth: 1500 meters
+
+Coordinator:
+   ParkAcqModes: spermWhales during 30 minutes every 1 hour
+
+ContinuousAcqMode spermWhales:
+
+Input:
+   // Use the high frequency hydrophone with sampling frequency of 20 kHz
+   sensor: HydrophoneHF(20000)
+   // Get packets of 128 samples
+   data: x(128)
+   // Set overlap of 32 samples
+   overlap: 32
+
+Variables:
+   // An array to process the acoustic data 
+   Array spectrum(128)
+   // Measured level
+   Float level
+   // File to record spectrum
+   //File fspectrum(ARCHIVE)
+   // File to record level
+   //File flevel(ARCHIVE)
+   // A buffer to record the acoustic data of the last 50 ms
+   Buffer last50ms(1000)
+   // Trigger
+   Bool trig
+   // Sample index when trigger is activated
+   Int sampleIndex
+   // Files to record sample index and last 50 ms of data
+   File fsampleIndex(TRANSMIT), flast50ms(ARCHIVE)
+
+RealTimeSequence main:
+   // Compute FFT of length 128 with a hanning windows
+   spectrum = fft(x, 128, HANNING)
+   // Compute the mean level of the signal from 1 kHz to 10 kHz
+   level = mean(spectrum[10:50])
+   // Push last data into buffer without overlaping part of 32 samples
+   last50ms.push(x[0:95])
+   // Trigger when the signal pass over 250 and after a delay of 8 packets of data (40 ms)
+   trig = trigger(level, RISING_EDGE, 250., 8, 0)
+   // Call the record function when the trigger is activated
+   if trig:
+      @probability 1 per minute
+      call record  
+   endif
+   // Record spectrum without symetric part
+   //fspectrum.record(spectrum[0:65])
+   // Record level
+   //flevel.record(level)
+endseq;
+
+ProcessingSequence record:
+   sampleIndex = getSampleIndex()
+   fsampleIndex.record(sampleIndex)
+   flast50ms.record(last50ms)
+endseq;
+
+endmode;
